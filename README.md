@@ -56,3 +56,4 @@ Each "bit" is a 3x3 degree patch of solar longitude and latitude.  A similarity 
 
 This is another work horse script, instead of calculating a scored synthetic spectra, it creates
 heatmaps of chosen variables over the surface of the event for a given time.  Here, the bitInd is used as the minute of data used from the simulation/ which txt file.
+Use mode = 'FrontBitVAR' only
