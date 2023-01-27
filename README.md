@@ -6,6 +6,17 @@ Tracking the Source of Solar Type II Bursts through Comparisons of Simulations a
 
 https://iopscience.iop.org/article/10.3847/1538-4357/ac2361
 
+Requires python 3.6 or higher and libraries
+numpy
+scipy
+matplotlib
+itertools
+sklearn
+astropy
+sunpy
+signal
+and other built in python libraries like os, sys, etc.
+
 First, dataPrep.py should be run once.
 
 This file does the initial reading of the .dat files, parses them, calculates some secondary variables, and puts the coordinates in a common frame.
