@@ -171,7 +171,7 @@ def getThetaRN(pos, N, B):
     for i in range(N):
 
         #if i%200==0:
-        #    print 'tic \n'
+        #    print('tic \n')
         sub = indices[i]
 
         inds = sub[1:]
@@ -200,12 +200,12 @@ def getThetaRN(pos, N, B):
 
             cross = np.cross(vect1, vect2)
             if scipy.linalg.norm(cross) == 0.:
-                # print i, j
-                # print cross
-                # print vect1, vect2
-                # print sub
-                # print distances[i]
-                # print pos[inds]
+                # print(i, j)
+                # print(cross)
+                # print(vect1, vect2)
+                # print(sub)
+                # print(distances[i])
+                # print(pos[inds])
                 continue
 
 
@@ -304,12 +304,12 @@ def getflux_Cairns(Ti, Te, thetaBN, U1, B1, B2):
     fluxF = delOmegaF/delfF*jF/AU**2
     fluxH = delOmegaH/delfH*jH/AU**2
 
-    #print type(fluxF)
-    #print type(delvb)
-    #print type(vb)
-    #print type(ve)
-    #print type(nb)
-    #print type(phiF)
+    #print(type(fluxF))
+    #print(type(delvb))
+    #print(type(vb))
+    #print(type(ve))
+    #print(type(nb))
+    #print(type(phiF))
 
 
     return fluxF, fluxH #flux density of point as seen from 1 AU
@@ -918,7 +918,7 @@ for time in [10, 20, 30, 40]: #times: #newMins:#[180]:#times:
             #norm
             Ns = np.array([Nxs, Nys, Nzs]).T
 
-            #print pos[9], pos[10], 'check1'
+            #print(pos[9], pos[10], 'check1')
 
             velos = np.array([uxs, uys, uzs]).T
 
