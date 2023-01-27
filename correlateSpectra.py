@@ -80,10 +80,10 @@ def my_interp(X, Y, Z, x, y, spn=5):
     z = np.zeros(xs.shape)
     sx, sy = xs.shape
     for i,(x, y) in enumerate(zip(xs.flatten(),ys.flatten())):
-        #print str(np.shape(X)) + str(np.shape(x))
-        #print x, y, i, xs, ys
+        #print(str(np.shape(X)) + str(np.shape(x)))
+        #print(x, y, i, xs, ys)
         if i%1600==0:
-            print i
+            print(i)
         # get the indices of the nearest X, Y
         xi = np.argmin(np.abs(X[0,:]-x))
         yi = np.argmin(np.abs(Y[:,0]-y))
@@ -95,8 +95,8 @@ def my_interp(X, Y, Z, x, y, spn=5):
         nX = X[ylo:yhi, xlo:xhi]
         nY = Y[ylo:yhi, xlo:xhi]
         nZ = Z[ylo:yhi, xlo:xhi]
-        # print str(xlo) + ' ' + str(xhi) + ' ' + str(xi) + ' ' + str(ylo) + ' ' + str(yhi) + ' ' + str(yi)
-        # print str(np.shape(nX)) + str(np.shape(nY)) +str(np.shape(nZ))
+        # print(str(xlo) + ' ' + str(xhi) + ' ' + str(xi) + ' ' + str(ylo) + ' ' + str(yhi) + ' ' + str(yi))
+        # print(str(np.shape(nX)) + str(np.shape(nY)) +str(np.shape(nZ)))
         intp = interpolate.interp2d(nX, nY, nZ, kind='linear', fill_value=0.)
         zi = i/sy
         zj = i - sy*zi
@@ -191,12 +191,12 @@ def getThetaRN(pos, N, B):
 
 
 
-    print 'Calculating approximate vector norms & diffs from radial'
+    print('Calculating approximate vector norms & diffs from radial')
 
     for i in range(N):
 
         #if i%200==0:
-        #    print 'tic \n'
+        #    print('tic \n')
         sub = indices[i]
 
         inds = sub[1:]
@@ -218,12 +218,12 @@ def getThetaRN(pos, N, B):
 
             cross = np.cross(vect1, vect2)
             if norm(cross) == 0.:
-                # print i, j
-                # print cross
-                # print vect1, vect2
-                # print sub
-                # print distances[i]
-                # print pos[inds]
+                # print(i, j)
+                # print(cross)
+                # print(vect1, vect2)
+                # print(sub)
+                # print(distances[i])
+                # print(pos[inds])
                 continue
 
 
@@ -321,12 +321,12 @@ def getflux_Cairns(Ti, Te, thetaBN, U1, B1, B2):
     fluxF = delOmegaF/delfF*jF/AU**2
     fluxH = delOmegaH/delfH*jH/AU**2
 
-    #print type(fluxF)
-    #print type(delvb)
-    #print type(vb)
-    #print type(ve)
-    #print type(nb)
-    #print type(phiF)
+    #print(type(fluxF))
+    #print(type(delvb))
+    #print(type(vb))
+    #print(type(ve))
+    #print(type(nb))
+    #print(type(phiF))
 
 
     return fluxF, fluxH #flux density of point as seen from 1 AU
@@ -367,8 +367,8 @@ freqs = append(freqs1, freqs2)#when no interpolating, don't need higher things a
 #starts at 100 khz
 # freqs = freqs[20:]
 
-print shape(allData)
-print shape(freqs)
+print(shape(allData))
+print(shape(freqs))
 #
 # days = ['20040106', '20040107', '20120102', '20120706', '20120119', '20120123']
 # starts = array([6, 10, 14, 22, 14, 3])*60
@@ -429,14 +429,14 @@ fact=1
 #16:00 on 05/13/2005
 start = 16*60 #+ 40 #starts[ind]
 
-print shape(X)
-print shape(Y)
+print(shape(X))
+print(shape(Y))
 
 X = X[:, start:start+totMins:fact]
 Y = Y[:, start:start+totMins:fact]
 
-print shape(X)
-print shape(Y)
+print(shape(X))
+print(shape(Y))
 
 
 newX = newX[:, start:start+totMins:fact]
@@ -464,7 +464,7 @@ if not os.path.exists(prePath + 'newDbdata.txt'):
 else:
     newDb = np.loadtxt(prePath + 'newDbdata.txt')#+str(ind)+'.txt')
 
-# print shape(newDb)
+# print(shape(newDb))
 
 #compute dB of sqrt(Intensity Ratio) after converting from dB to intensity again
 newDbsqrt = 10*log10(np.sqrt(10.**(newDb/10)))
@@ -473,7 +473,7 @@ allDataDb = 10*log10(allData)
 
 allDataDbsqrt = 10*log10(np.sqrt(10.**(allDataDb/10)))
 
-print shape(allDataDbsqrt)
+print(shape(allDataDbsqrt))
 
 
 
@@ -622,7 +622,7 @@ for i in range(len(speed3s)):
 
 
     speed1, speed2, length, startr, aune = speed3s[i]
-    print speed3s[i]
+    print(speed3s[i])
 
     speeds = speed2*ones(totTypeMins)
     rs = startr*ones(totTypeMins)
@@ -961,7 +961,7 @@ for cut in cuts:
 
     #bitInd for indexing through the bits of the other modes.  Make 0 uncut
 
-    print cut
+    print(cut)
 
     if datPre == 'iso_Tp=3.5MK_':
         times1 = linspace(2, 36, 18).astype(int) #every 2
@@ -1061,9 +1061,9 @@ for cut in cuts:
         #
         # data[:, 13:16] = HTVelo
         # data[:, 16] = absHTVelo
-        print 'time is ' +  str(time)
+        print('time is ' +  str(time))
 
-        print str(np.shape(data)[0]) + ' is numpoints after loading time ' + str(time)
+        print(str(np.shape(data)[0]) + ' is numpoints after loading time ' + str(time))
 
         deg2D = data[:, 1:3]
         visData = data.copy()
@@ -1097,8 +1097,8 @@ for cut in cuts:
 
             #remove close in artifact
             maxr = max(r3s)
-            print 'max r out projected is ' + str(maxr)
-            print 'mean r is ' + str(np.mean(r3s))
+            print('max r out projected is ' + str(maxr))
+            print('mean r is ' + str(np.mean(r3s)))
 
             #convoluted removal?
             longLows = linspace(-60., 57., 40)
@@ -1185,7 +1185,7 @@ for cut in cuts:
 
             #remove close in artifact
             maxr = max(r3s)
-            print 'max r out is ' + str(maxr)
+            print('max r out is ' + str(maxr))
 
             maxrs.append(maxr)
             meanrs.append(np.mean(r3s))
@@ -1193,8 +1193,8 @@ for cut in cuts:
             meanys.append(np.mean(visData[:, 1]))
             meanzs.append(np.mean(visData[:, 2]))
             medianrs.append(np.median(r3s))
-            # print 'mean r out is ' + str(np.mean(r3s))
-            # print 'median r out is ' + str(np.median(r3s))
+            # print('mean r out is ' + str(np.mean(r3s)))
+            # print('median r out is ' + str(np.median(r3s)))
 
             #delete secondary population behind main shock, as well as artifacts near sun
             # smallR = np.where(np.logical_or(r2s < 2., np.logical_and(r2s < maxr*.7, np.logical_and(azimuths > 20., azimuths < 70.))))[0]
@@ -1292,7 +1292,7 @@ for cut in cuts:
 
 
             maxr = max(r2s)
-            print 'max r out projected is ' + str(maxr)
+            print('max r out projected is ' + str(maxr))
             smallR = np.where(r2s < maxr/2.)[0]
 
             # visData = np.delete(visData, smallR, axis=0)
@@ -1312,7 +1312,7 @@ for cut in cuts:
 
             #remove close in artifact
             maxr = max(r2s)
-            print 'max r out projected is ' + str(maxr)
+            print('max r out projected is ' + str(maxr))
 
             #delete secondary population behind main shock, as well as artifacts near sun
             # smallR = np.where(np.logical_or(r2s < 2., np.logical_and(r2s < maxr*.7, np.logical_and(azimuths > 20., azimuths < 70.))))[0]
@@ -1400,7 +1400,7 @@ for cut in cuts:
             azimuths = np.arctan2(deg2D[:,1], deg2D[:, 0])/np.pi*180.
             r2s = sqrt(deg2D[:,0]**2 + deg2D[:, 1]**2)
             maxr = max(r2s)
-            print 'max r out projected is ' + str(maxr)
+            print('max r out projected is ' + str(maxr))
             smallR = np.where(np.logical_or(r2s < maxr*1./4., r2s > maxr*3./4.))[0]
 
             visData = np.delete(visData, smallR, axis=0)
@@ -1410,8 +1410,8 @@ for cut in cuts:
             ######one cut cut
             #done cut
 
-        print str(np.shape(data)[0]) + ' is numpoints after cuts'
-        # print 'time is ' +  str(time)
+        print(str(np.shape(data)[0]) + ' is numpoints after cuts')
+        # print('time is ' +  str(time))
 
 
 
@@ -1426,7 +1426,7 @@ for cut in cuts:
         freqData = data[:, 9]*1000 # *0.5 #flag for possible upstream factor
         varIndData = data[:, varInd]
 
-        # print 'len of freqdata is ' + str(len(freqData))
+        # print('len of freqdata is ' + str(len(freqData)))
         # BData = np.sqrt(data[:, 6]**2 + data[:, 7]**2 + data[:, 8]**2)
         # Bmax = 0.
         # if len(data) != 0:
@@ -1437,7 +1437,7 @@ for cut in cuts:
         # varHigh = Bmax
 
 
-        # print 'sorting data by x coord'
+        # print('sorting data by x coord')
         #data = [(x, y, z, f) for x, y, z, f in zip(xs, ys, zs, fs)]
 
         #project to 2D y-z POS
@@ -1476,7 +1476,7 @@ for cut in cuts:
                 ptmax = cutData[t, f]
         if ptmax != 0.:
             cutData[t, :] /= float(ptmax) #float(pttot)
-        print 'pttotal after chosen variable cut is ' + str(pttot)
+        print('pttotal after chosen variable cut is ' + str(pttot))
         #normalize by numbner of points in file
 
         #normalize so sum of whole column is 1, and it shows proportionally the freq spread in the cut
@@ -1622,7 +1622,7 @@ for cut in cuts:
     # z = my_interp(X, Y, cutData.T, x, y, spn=2)
 
     #im = ax1.imshow(cutData.T, interpolation='none')
-    print shape(Xsim), shape(Ysim), shape(cutDataCol1)
+    print(shape(Xsim), shape(Ysim), shape(cutDataCol1))
 
     #create last figure here with data we've been building up over time
 
@@ -1721,7 +1721,7 @@ for cut in cuts:
     #         maxSynthData = newSynthData.copy()
     #
     #
-    # # print score
+    # # print(score)
     # maxScores.append((maxScore, bitInd, maxLead))
     # print('Max score for this interpolated data is  %2.2f'%maxScore)
     # # print('Max score obtained with time shift of 17:20 + ' +str(maxLead) + ' minutes')
@@ -1731,7 +1731,7 @@ for cut in cuts:
 
     # fig, ax = subplots(figsize=(16,8))
     #
-    # print shape(X), shape(Y), shape(maxSynthData)
+    # print(shape(X), shape(Y), shape(maxSynthData))
     #
     # # p = ax.pcolormesh(newX[:-23, :], newY[:-23, :], newDbsqrt[:-23, :], vmin=0., vmax=vmaxp,cmap=cm)#gist_ncar_r")
     # p = ax.pcolormesh(X, Y, maxSynthData, vmin=0., vmax=max(amax(maxSynthData), 0.0000001),cmap=cm)#gist_ncar_r")
@@ -1847,13 +1847,13 @@ for cut in cuts:
         # json.dump(zeroScores.tolist(), open('zeroScores.txt", 'w'))
 
 
-# print 'max scores, max lead times (minutes) from 17:20'
-# print 'max scores, max lead times (minutes) from 16:47'
-# print maxScores
-# print sorted(maxScores)
-# print 'scores from no lag adjustment'
-# print zeroScores
-# print sorted(zeroScores)
+# print('max scores, max lead times (minutes) from 17:20')
+# print('max scores, max lead times (minutes) from 16:47')
+# print(maxScores)
+# print(sorted(maxScores))
+# print('scores from no lag adjustment')
+# print(zeroScores)
+# print(sorted(zeroScores))
 
 # sortedMaxScores = sorted(maxScores, reverse=True)
 # json.dump(sortedMaxScores, open('maxScores.txt', 'w'))
@@ -1956,9 +1956,9 @@ makeheatMap = False
 
 #only if doing all 1600 zeroscores to fill up heatmap
 if makeheatMap:
-    print 'scores from no lag adjustment'
-    print shape(zeroScores)
-    print zeroScores
+    print('scores from no lag adjustment')
+    print(shape(zeroScores))
+    print(zeroScores)
     json.dump(zeroScores, open('zeroScoresNEW.txt', 'w'))
 
     longLows = linspace(-60., 57., 40)
