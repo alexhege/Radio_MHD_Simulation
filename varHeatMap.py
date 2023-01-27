@@ -79,10 +79,10 @@ def my_interp(X, Y, Z, x, y, spn=5):
     z = np.zeros(xs.shape)
     sx, sy = xs.shape
     for i,(x, y) in enumerate(zip(xs.flatten(),ys.flatten())):
-        #print str(np.shape(X)) + str(np.shape(x))
-        #print x, y, i, xs, ys
+        #print(str(np.shape(X)) + str(np.shape(x)))
+        #print(x, y, i, xs, ys)
         if i%1600==0:
-            print i
+            print(i)
         # get the indices of the nearest X, Y
         xi = np.argmin(np.abs(X[0,:]-x))
         yi = np.argmin(np.abs(Y[:,0]-y))
@@ -94,8 +94,8 @@ def my_interp(X, Y, Z, x, y, spn=5):
         nX = X[ylo:yhi, xlo:xhi]
         nY = Y[ylo:yhi, xlo:xhi]
         nZ = Z[ylo:yhi, xlo:xhi]
-        # print str(xlo) + ' ' + str(xhi) + ' ' + str(xi) + ' ' + str(ylo) + ' ' + str(yhi) + ' ' + str(yi)
-        # print str(np.shape(nX)) + str(np.shape(nY)) +str(np.shape(nZ))
+        # print(str(xlo) + ' ' + str(xhi) + ' ' + str(xi) + ' ' + str(ylo) + ' ' + str(yhi) + ' ' + str(yi))
+        # print(str(np.shape(nX)) + str(np.shape(nY)) +str(np.shape(nZ)))
         intp = interpolate.interp2d(nX, nY, nZ, kind='linear', fill_value=0.)
         zi = i/sy
         zj = i - sy*zi
@@ -188,12 +188,12 @@ def getThetaRN(pos, N, B):
 
 
 
-    print 'Calculating approximate vector norms & diffs from radial'
+    print('Calculating approximate vector norms & diffs from radial')
 
     for i in range(N):
 
         #if i%200==0:
-        #    print 'tic \n'
+        #    print('tic \n')
         sub = indices[i]
 
         inds = sub[1:]
@@ -215,12 +215,12 @@ def getThetaRN(pos, N, B):
 
             cross = np.cross(vect1, vect2)
             if norm(cross) == 0.:
-                # print i, j
-                # print cross
-                # print vect1, vect2
-                # print sub
-                # print distances[i]
-                # print pos[inds]
+                # print(i, j)
+                # print(cross)
+                # print(vect1, vect2)
+                # print(sub)
+                # print(distances[i])
+                # print(pos[inds])
                 continue
 
 
@@ -318,12 +318,12 @@ def getflux_Cairns(Ti, Te, thetaBN, U1, B1, B2):
     fluxF = delOmegaF/delfF*jF/AU**2
     fluxH = delOmegaH/delfH*jH/AU**2
 
-    #print type(fluxF)
-    #print type(delvb)
-    #print type(vb)
-    #print type(ve)
-    #print type(nb)
-    #print type(phiF)
+    #print(type(fluxF))
+    #print(type(delvb))
+    #print(type(vb))
+    #print(type(ve))
+    #print(type(nb))
+    #print(type(phiF))
 
 
     return fluxF, fluxH #flux density of point as seen from 1 AU
@@ -364,8 +364,8 @@ freqs = append(freqs1, freqs2)#when no interpolating, don't need higher things a
 #starts at 100 khz
 # freqs = freqs[20:]
 
-print shape(allData)
-print shape(freqs)
+print(shape(allData))
+print(shape(freqs))
 #
 # days = ['20040106', '20040107', '20120102', '20120706', '20120119', '20120123']
 # starts = array([6, 10, 14, 22, 14, 3])*60
@@ -426,14 +426,14 @@ fact=1
 #16:00 on 05/13/2005
 start = 16*60 #+ 40 #starts[ind]
 
-print shape(X)
-print shape(Y)
+print(shape(X))
+print(shape(Y))
 
 X = X[:, start:start+totMins:fact]
 Y = Y[:, start:start+totMins:fact]
 
-print shape(X)
-print shape(Y)
+print(shape(X))
+print(shape(Y))
 
 
 newX = newX[:, start:start+totMins:fact]
@@ -460,7 +460,7 @@ if not os.path.exists(prePath + 'newDbdata.txt'):
 else:
     newDb = np.loadtxt(prePath + 'newDbdata.txt')#+str(ind)+'.txt')
 
-# print shape(newDb)
+# print(shape(newDb))
 
 #compute dB of sqrt(Intensity Ratio) after converting from dB to intensity again
 newDbsqrt = 10*log10(np.sqrt(10.**(newDb/10)))
@@ -469,7 +469,7 @@ allDataDb = 10*log10(allData)
 
 allDataDbsqrt = 10*log10(np.sqrt(10.**(allDataDb/10)))
 
-print shape(allDataDbsqrt)
+print(shape(allDataDbsqrt))
 
 newX = newX[:, start:start+totMins:fact]
 newY = newY[:, start:start+totMins:fact]
@@ -619,7 +619,7 @@ for i in range(len(speed3s)):
 
 
     speed1, speed2, length, startr, aune = speed3s[i]
-    print speed3s[i]
+    print(speed3s[i])
 
     speeds = speed2*ones(totTypeMins)
     rs = startr*ones(totTypeMins)
@@ -984,7 +984,7 @@ for cut in cuts:
 
     #bitInd for indexing through the bits of the other modes.  Make 0 uncut
 
-    print cut
+    print(cut)
 
     if datPre == 'iso_Tp=3.5MK_':
         times1 = linspace(2, 36, 18).astype(int) #every 2
@@ -1074,9 +1074,9 @@ for cut in cuts:
         # data[:, 13:16] = HTVelo
         # data[:, 16] = absHTVelo
 
-        print 'time is ' +  str(time)
+        print('time is ' +  str(time))
 
-        print str(np.shape(data)[0]) + ' is numpoints after loading time ' + str(time)
+        print(str(np.shape(data)[0]) + ' is numpoints after loading time ' + str(time))
 
 
         #fix thetaBN to 0-90 instead of 0-180
@@ -1100,7 +1100,7 @@ for cut in cuts:
 
             #remove close in artifact
             maxr = max(r3s)
-            print 'max r out projected is ' + str(maxr)
+            print('max r out projected is ' + str(maxr))
 
             #convoluted removal?
             longLows = linspace(-60., 57., 40)
@@ -1173,7 +1173,7 @@ for cut in cuts:
 
             #remove close in artifact
             maxr = max(r2s)
-            print 'max r out projected is ' + str(maxr)
+            print('max r out projected is ' + str(maxr))
 
             #delete secondary population behind main shock, as well as artifacts near sun
             # smallR = np.where(np.logical_or(r2s < 2., np.logical_and(r2s < maxr*.7, np.logical_and(azimuths > 20., azimuths < 70.))))[0]
@@ -1276,7 +1276,7 @@ for cut in cuts:
 
                 #remove close in artifact
                 maxr = max(r2s)
-                print 'max r out projected is ' + str(maxr)
+                print('max r out projected is ' + str(maxr))
 
 
                 enhanceFactor = 2
@@ -1538,7 +1538,7 @@ for cut in cuts:
 
 
             maxr = max(r2s)
-            print 'max r out projected is ' + str(maxr)
+            print('max r out projected is ' + str(maxr))
             smallR = np.where(r2s < maxr/2.)[0]
 
             visData = np.delete(visData, smallR, axis=0)
@@ -1558,7 +1558,7 @@ for cut in cuts:
 
             #remove close in artifact
             maxr = max(r2s)
-            print 'max r out projected is ' + str(maxr)
+            print('max r out projected is ' + str(maxr))
 
             #delete secondary population behind main shock, as well as artifacts near sun
             # smallR = np.where(np.logical_or(r2s < 2., np.logical_and(r2s < maxr*.7, np.logical_and(azimuths > 20., azimuths < 70.))))[0]
@@ -1646,7 +1646,7 @@ for cut in cuts:
             azimuths = np.arctan2(deg2D[:,1], deg2D[:, 0])/np.pi*180.
             r2s = sqrt(deg2D[:,0]**2 + deg2D[:, 1]**2)
             maxr = max(r2s)
-            print 'max r out projected is ' + str(maxr)
+            print('max r out projected is ' + str(maxr))
             smallR = np.where(np.logical_or(r2s < maxr*1./4., r2s > maxr*3./4.))[0]
 
             visData = np.delete(visData, smallR, axis=0)
